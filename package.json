@@ -1,0 +1,16 @@
+{
+  "name": "learning",
+  "version": "1.0.0",
+  "description": "Node Js",
+  "license": "ISC",
+  "author": "Ayush",
+  "type": "commonjs",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node \"First Code/hello.js\""
+  },
+  "dependencies": {
+    "axios": "^1.20.0"
+  }
+}
