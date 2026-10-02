@@ -1,11 +1,16 @@
-const path = require('node:path')
+const fs = require('fs');
 
-// let myPath = path.join('user','manas','resume.js')
-// let myAbsolutePath = path.resolve('user','manas','resume.js')
-// console.log(myPath)
-// console.log(myAbsolutePath)
+console.log("first code")
+console.log("2nd code")
 
-let myPath = path.join('user','manas','resume.js')
-let myAbsolutePath = path.resolve('user','manas','resume.js')
- console.log(myPath)
- console.log(myAbsolutePath)
+// synchronous(blocking)
+// console.log(fs.readFileSync('hello.txt','utf8'))
+
+// Asynchronous (non-blocking)
+fs.readFile('hello.txt','utf8',(err, data)=>{
+    if(err) console.log(err)
+    else console.log(data)
+})
+
+console.log("3rd code")
+console.log("4rth code")
