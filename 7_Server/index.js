@@ -7,7 +7,7 @@ const server=http.createServer((req,res)=>{
     // console.log(req.headers); 
 
     const date=new Date().toLocaleString();
-    const content='new Request received,Date: ${date},url:${req.url}'
+    const content=`new Request received,Date: ${date},url:${req.url}\n`
 
     fs.appendFile('log.txt',content,()=>{
         console.log("Request Received Succesfully")
