@@ -1,24 +1,74 @@
-const http=require('node:http');
-const fs=require('node:fs');
+// const http=require('node:http');
+// const fs=require('node:fs');
 
-const server = http.createServer((req, res)=>{
-    fs.appendFileSync('log.txt', `${req.method} request recieved...!!\n`)
-    if(req.method === 'GET'){
-        res.end('ye lo data..!!')
-    }else if(req.method === 'POST'){
-        // create data in database logic
-        res.end('data successfully create ho chuka hai..!!')
-    }else if(req.method === 'PUT'){
-        // update karne ka logic
-        res.end('data hamara update ho chuka hai...!!')
-    }else if(req.method === 'DELETE'){
-        // database me delete karne ka logic
-        res.end('data delete ho chuka hai...!!')
-    }else {
-        res.end('shi method choose karo please...!!!')
+// const server = http.createServer((req, res)=>{
+//     fs.appendFileSync('log.txt', `${req.method} request recieved...!!\n`)
+//     if(req.method === 'GET'){
+//         res.end('ye lo data..!!')
+//     }else if(req.method === 'POST'){
+//         // create data in database logic
+//         res.end('data successfully create ho chuka hai..!!')
+//     }else if(req.method === 'PUT'){
+//         // update karne ka logic
+//         res.end('data hamara update ho chuka hai...!!')
+//     }else if(req.method === 'DELETE'){
+//         // database me delete karne ka logic
+//         res.end('data delete ho chuka hai...!!')
+//     }else {
+//         res.end('shi method choose karo please...!!!')
+//     }
+// })
+
+// server.listen(8000,()=>{
+//     console.log("Server listening on http://localhost:8000")
+// })
+
+const http = require('node:http');
+const fs = require('node:fs').promises;
+
+const server = http.createServer(async (req, res) => {
+
+    try {
+        await fs.appendFile(
+            'log.txt',
+            `${req.method} request received...!!\n`
+        );
+
+        if (req.method === 'GET') {
+
+            res.end('ye lo data..!!');
+
+        } 
+        else if (req.method === 'POST') {
+
+            // create data in database logic
+            res.end('data successfully create ho chuka hai...!!');
+
+        } 
+        else if (req.method === 'PUT') {
+
+            // update karne ka logic
+            res.end('data hamara update ho chuka hai...!!');
+
+        } 
+        else if (req.method === 'DELETE') {
+
+            // database me delete karne ka logic
+            res.end('data delete ho chuka hai...!!');
+
+        } 
+        else {
+
+            res.end('shi method choose karo please...!!!');
+
+        }
+
+    } catch (err) {
+        console.log(err);
+        res.end('Something went wrong...!!');
     }
-})
+});
 
-server.listen(8000,()=>{
-    console.log("Server listening on http://localhost:8000")
-})
+server.listen(8000, () => {
+    console.log('Server listening on http://localhost:8000');
+});
